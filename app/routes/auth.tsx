@@ -7,7 +7,7 @@ export const meta  = () => ([
     { name: 'description', content: 'Log into your account'}
 ])
 
-const Auth: () => React.JSX.Element = () => {
+const Auth = () => {
     const { isLoading, auth } = usePuterStore();
     const location = useLocation();
     const next = location.search.split('next=')[1];
