@@ -29,7 +29,7 @@ const FileUploader = ({ onFileSelect, selectedFile }: FileUploaderProps) => {
             <div {...getRootProps()}>
                 <input {...getInputProps({ id: 'uploader' })} />
 
-                <div className="space-y-4 cursor-pointer">
+                <div className="space-y-4 cursor-pointer w-full flex flex-col items-center">
 
                     {file ? (
                         <div className="uploader-selected-file" onClick={(e) => e.stopPropagation()}>
@@ -51,7 +51,7 @@ const FileUploader = ({ onFileSelect, selectedFile }: FileUploaderProps) => {
                             </button>
                         </div>
                     ) : (
-                        <div>
+                        <div className="text-center">
                             <div className="mx-auto w-16 h-16 flex items-center justify-center mb-2">
                                 <img src="/icons/info.svg" alt="upload" className="size-20"/>
                             </div>
