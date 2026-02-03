@@ -1,43 +1,81 @@
-# Welcome to React Router!
+# Resumind - AI Resume Analyzer
 
-A modern, production-ready template for building full-stack React applications using React Router.
+A serverless, AI-powered Applicant Tracking System (ATS) and resume analyzer. **Resumind** helps jobseekers optimize their resumes by analyzing them against specific job descriptions using advanced AI models (Claude, GPT, etc.) entirely for free via Puter.js.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+![Resumind Screenshot](/public/images/sample.png)
 
-## Features
+## 🚀 Features
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+-   **Smart Resume Analysis:** Upload your resume (PDF) and a job description to get instant, AI-driven feedback.
+-   **ATS Scoring:** Get a real-time compatibility score (0-100) to see how well you match the job.
+-   **Detailed Feedback:** Receive actionable insights across four key categories:
+    -   **Tone & Style:** Ensure your resume sounds professional and passionate.
+    -   **Content:** Check for quantifiable achievements and clarity.
+    -   **Structure:** Verify standard sections and formatting.
+    -   **Skills:** Identify missing keywords and skills required by the job post.
+-   **Zero-Backend Architecture:** Built completely serverless using **Puter.js** for Authentication, File Storage, Key-Value Database, and AI execution.
+-   **Privacy Focused:** Your files are stored securely on your own personal cloud via Puter.
+-   **Modern UI:** A responsive, beautiful interface built with React Router v7 and Tailwind CSS v4.
 
-## Getting Started
+## 🛠️ Tech Stack
 
-### Installation
+-   **Framework:** React 19 (via React Router v7)
+-   **Language:** TypeScript
+-   **Styling:** Tailwind CSS v4 + Tailwind Animate
+-   **State Management:** Zustand
+-   **Cloud & AI:** [Puter.js](https://docs.puter.com/) (Auth, FS, KV, AI)
+-   **PDF Processing:** PDF.js (`pdfjs-dist`)
+-   **Build Tool:** Vite
 
-Install the dependencies:
+## ⚙️ Prerequisites
 
-```bash
-npm install
-```
+1.  **Node.js** (v18 or later) installed on your machine.
+2.  A free account on [Puter.com](https://puter.com) (required for Auth and AI features).
 
-### Development
+## 📦 Installation
 
-Start the development server with HMR:
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/ThangHoang54/ai-resume-analyser.git
+    cd resumind
+    ```
 
-```bash
-npm run dev
-```
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
 
-Your application will be available at `http://localhost:5173`.
+    *Note: If you run into issues with `pdfjs-dist`, ensure you are using the correct version compatible with the code (e.g., v5.3.93).*
 
-## Styling
+3.  **Start the development server:**
+    ```bash
+    npm run dev
+    ```
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+4.  **Open the app:**
+    Visit `http://localhost:5173` in your browser.
 
----
+## 🏃‍♂️ How to Use
 
-Built with ❤️ using React Router.
+1.  **Log In:** Click the "Log In" button. This will authenticate you via your Puter.com account.
+2.  **Upload:**
+    * Enter the **Company Name** and **Job Title**.
+    * Paste the full **Job Description** from the job listing.
+    * Upload your Resume (PDF format, max 20MB).
+3.  **Analyze:** Click "Analyze Resume". The app will:
+    * Upload your resume to your Puter cloud storage.
+    * Convert the first page to an image for preview.
+    * Send the text and job description to the AI model.
+4.  **Review:** You will be redirected to a feedback page showing your score and specific tips to improve your application.
+
+## ☁️ Deployment
+
+This app is designed to be hosted on **Puter.com** but can be deployed anywhere that supports static sites (Vercel, Netlify) with minor adjustments.
+
+**To deploy on Puter:**
+1.  Set `ssr: false` in `react-router.config.ts`.
+2.  Run `npm run build`.
+3.  Upload the contents of the `dist/client` (or `build/client`) folder to your Puter.com file system.
+4.  Launch it as a web app!
+
+Built with ❤️ using React Router & Puter.js.
