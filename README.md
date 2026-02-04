@@ -1,4 +1,4 @@
-# Resumind - AI Resume Analyzer
+# ResumeDex - AI Resume Analyzer
 
 A serverless, AI-powered Applicant Tracking System (ATS) and resume analyzer. **Resumind** helps jobseekers optimize their resumes by analyzing them against specific job descriptions using advanced AI models (Claude, GPT, etc.) entirely for free via Puter.js.
 
@@ -38,7 +38,7 @@ A serverless, AI-powered Applicant Tracking System (ATS) and resume analyzer. **
 1.  **Clone the repository:**
     ```bash
     git clone https://github.com/ThangHoang54/ai-resume-analyser.git
-    cd ai-resume-analyser
+    cd resumedex
     ```
 
 2.  **Install dependencies:**

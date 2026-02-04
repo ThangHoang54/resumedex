@@ -1,7 +1,6 @@
 import type { JSX } from "react";
-import { Link, NavLink, useLocation } from "react-router";
+import { Link } from "react-router";
 import { usePuterStore } from "~/lib/puter";
-import { useState } from "react";
 import { cn } from "~/lib/utils";
 
 const Navbar: () => JSX.Element = () => {
@@ -21,7 +20,7 @@ const Navbar: () => JSX.Element = () => {
                         </svg>
                     </div>
                     <span className="text-xl font-bold text-slate-800 tracking-tight group-hover:text-indigo-600 transition-colors">
-                        RESUMIND
+                        RESUMEDEX
                     </span>
                 </Link>
 

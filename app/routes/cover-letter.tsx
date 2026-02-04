@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { usePuterStore } from "~/lib/puter";
 
 export const meta = () => ([
-    { title: 'Resumind | Cover Letter' },
+    { title: 'ResumeDex | Cover Letter' },
     { name: 'description', content: 'AI Generated Cover Letter' }
 ]);
 

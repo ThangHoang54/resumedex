@@ -8,7 +8,7 @@ import {generateUUID} from "~/lib/utils";
 import {prepareInstructions} from "../../constants";
 
 export const meta = () => ([
-    { title: 'Resumind | Upload ' },
+    { title: 'ResumeDex | Upload ' },
     { name: 'description', content: 'Upload your resume to view feedback' },
 ])
 
