@@ -37,7 +37,7 @@ A serverless, AI-powered Applicant Tracking System (ATS) and resume analyzer. **
 1.  **Clone the repository:**
     ```bash
     git clone https://github.com/ThangHoang54/ai-resume-analyser.git
-    cd resumind
+    cd ai-resume-analyser
     ```
 
 2.  **Install dependencies:**
