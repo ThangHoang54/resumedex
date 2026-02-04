@@ -11,55 +11,65 @@ interface ATSProps {
 }
 
 const Ats: React.FC<ATSProps> = ({ score, suggestions }) => {
-    // Determine background gradient based on score
-    const gradientClass = score > 69
-        ? 'from-green-100'
-        : score > 49 ? 'from-yellow-100' : 'from-red-100';
+    const isSafe = score > 79;
+    const isRisk = score < 59;
 
-    // Determine icon based on score
-    const iconSrc = score > 69
-        ? '/icons/ats-good.svg'
-        : score > 49 ? '/icons/ats-warning.svg' : '/icons/ats-bad.svg';
+    // Gradient logic
+    const gradient = isSafe
+        ? "from-emerald-400 to-teal-500"
+        : isRisk ? "from-rose-400 to-red-500" : "from-amber-400 to-orange-500";
 
-    // Determine subtitle base on score
-    const subtitle = score > 69
-        ? 'Great Job!'
-        : score > 49
-            ? 'Good Start' : 'Needs Improvement';
+    const statusText = isSafe ? "ATS Optimized" : isRisk ? "High Risk" : "Needs Work";
+    const bgStyle = isSafe ? "bg-emerald-50" : isRisk ? "bg-rose-50" : "bg-amber-50";
+    const borderStyle = isSafe ? "border-emerald-100" : isRisk ? "border-rose-100" : "border-amber-100";
+
+    const topSuggestions = suggestions.slice(0, 4);
 
     return (
-        <div className={`bg-gradient-to-b ${gradientClass} to-white rounded-2xl shadow-md w-full p-6`}>
-            <div className='flex items-center gap-4 mb-6'>
-                <img src={iconSrc} alt="ATS Score Icon" className="w-12 h-12" />
+        <div className={`h-full w-full rounded-2xl border ${borderStyle} ${bgStyle} p-5 flex flex-col relative overflow-hidden shadow-sm hover:shadow-md transition-shadow`}>
+            {/* Header Section */}
+            <div className="flex items-center justify-between mb-4 z-10 shrink-0">
                 <div>
-                    <h2 className="text-2xl font-bold">ATS Score - {score}/100</h2>
+                    <h2 className="text-base lg:text-lg font-bold text-slate-800 flex items-center gap-2">
+                        <span className="text-xl"></span> ATS Scoring
+                    </h2>
+                    <div className={`px-3 py-1 rounded-full text-[10px] lg:text-xs font-bold text-white shadow-sm bg-gradient-to-r ${gradient}`}>
+                        {statusText}
+                    </div>
+                    <p className="text-gray-500 text-sm mt-1">
+                        This score represents how well your resume is likely to perform in Applicant Tracking Systems used by employers
+                    </p>
                 </div>
             </div>
 
-            <div className="mb-6">
-                <h3 className="text-xl font-semibold mb-2">{subtitle}</h3>
-                <p className="text-gray-600 mb-4">
-                    This score represents how well your resume is likely to perform in Applicant Tracking Systems used by employers.
-                </p>
+                {/* Content Row */}
+                <div className="flex-1 flex flex-col md:flex-row gap-4 lg:gap-6 items-center z-10 overflow-hidden min-h-0">
 
-                <div className="space-y-3">
-                    {suggestions.map((suggestion, index) => (
-                        <div key={index} className="flex items-start gap-3">
-                            <img
-                                src={suggestion.type === "good" ? "/icons/check.svg" : "/icons/warning.svg"}
-                                alt={suggestion.type === "good" ? "Check" : "Warning"}
-                                className="w-5 h-5 mt-1"
-                            />
-                            <p className={suggestion.type === "good" ? "text-green-700" : "text-amber-700"}>
-                                {suggestion.tip}
-                            </p>
+                    {/* Big Score Number */}
+                    <div className="flex flex-col items-center justify-center min-w-[80px] lg:min-w-[100px] shrink-0">
+                    <span className={`text-4xl lg:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-br ${gradient}`}>
+                        {score}
+                    </span>
+                        <span className="text-[10px] lg:text-xs font-semibold text-slate-500 mt-1 uppercase tracking-wider">/ 100 Points</span>
+                    </div>
+
+                    {/* Suggestions List*/}
+                    <div className="flex-1 w-full h-full overflow-y-auto scrollbar-thin scrollbar-thumb-slate-300/50 scrollbar-track-transparent pr-2">
+                        <div className="flex flex-col gap-2 pb-2">
+                            {topSuggestions.map((s, i) => (
+                                <div key={i} className="flex items-start gap-2 text-sm bg-white/60 p-2 rounded-lg border border-white/50 shadow-sm transition-transform hover:scale-[1.01]">
+                                    <img src={s.tip === "good" ? "/icons/check.svg" : "/icons/warning.svg"} className="mt-0.5" />
+                                    <span className="text-slate-700 leading-tight line-clamp-2">{s.tip}</span>
+                                </div>
+                            ))}
                         </div>
-                    ))}
+                    </div>
                 </div>
-            </div>
 
-            <p className="text-gray-700 italic">
-                Keep refining your resume to improve your chances of getting past ATS filters and into the hands of recruiters.
+            {/* Decorative background blob */}
+            <div className={`absolute -top-20 -right-20 w-64 h-64 rounded-full opacity-10 blur-3xl ${bgStyle}`}></div>
+            <p className="text-gray-500 italic text-sm mt-2 ">
+                Keep refining your resume to improve your chances of getting past ATS filters and into the hands of recruiters
             </p>
         </div>
     )

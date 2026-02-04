@@ -48,7 +48,7 @@ export default function Home() {
                 <div className="page-heading py-12 md:py-16 animate-in slide-in-from-bottom-4 duration-700">
                     <h1>Track Your Application <br className="hidden md:block" /> & Resume Ratings</h1>
                     <h2 className="mt-4 max-w-2xl mx-auto opacity-80 text-lg md:text-2xl">
-                        Review your submissions and check AI-powered feedback.
+                        Review your submissions and check AI-powered feedback
                     </h2>
                 </div>
 
