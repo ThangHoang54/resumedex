@@ -16,6 +16,7 @@ const Resume = () => {
     const [imageUrl, setImageUrl] = useState('');
     const [resumeUrl, setResumeUrl] = useState('');
     const [feedback, setFeedback] = useState<Feedback | null>(null);
+    const [hasCoverLetter, setHasCoverLetter] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -29,6 +30,8 @@ const Resume = () => {
             if(!resume) return;
 
             const data = JSON.parse(resume);
+
+            if (data.coverLetter) { setHasCoverLetter(true); }
 
             const  resumeBlob = await fs.read(data.resumePath);
             if(!resumeBlob) return;
@@ -58,7 +61,24 @@ const Resume = () => {
                     </div>
                     <span className="font-semibold text-sm hidden sm:block">Return to Homepage</span>
                 </Link>
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-3">
+                    <Link to={`/cover-letter/${id}`}
+                          className={`px-4 py-2 rounded-lg text-xs font-bold transition-all shadow-sm border flex items-center gap-2 ${
+                              hasCoverLetter
+                                  ? "bg-white text-indigo-600 border-indigo-200 hover:bg-indigo-50"
+                                  : "bg-indigo-600 text-white border-transparent hover:bg-indigo-700 shadow-indigo-200"
+                          }`}
+                    >
+                        {hasCoverLetter ? (
+                            <>
+                                <span className="text-black text-xs font-bold">Preview Cover Letter</span>
+                            </>
+                        ) : (
+                            <>
+                                <span className="text-white text-xs font-bold">Write Cover Letter</span>
+                            </>
+                        )}
+                    </Link>
                     {resumeUrl && (
                         <a href={resumeUrl} target="_blank" rel="noreferrer" className="px-4 py-2 rounded-lg bg-slate-900 text-white text-xs font-bold hover:bg-slate-800 transition-all shadow-md hover:shadow-lg">
                             Download PDF

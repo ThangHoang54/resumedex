@@ -8,6 +8,7 @@ A serverless, AI-powered Applicant Tracking System (ATS) and resume analyzer. **
 
 -   **Smart Resume Analysis:** Upload your resume (PDF) and a job description to get instant, AI-driven feedback.
 -   **ATS Scoring:** Get a real-time compatibility score (0-100) to see how well you match the job.
+-   **AI Cover Letter Assistant:** Instantly generate professional, tailored cover letters that highlight your strengths relative to the specific job description. Supports regeneration and easy copying.
 -   **Detailed Feedback:** Receive actionable insights across four key categories:
     -   **Tone & Style:** Ensure your resume sounds professional and passionate.
     -   **Content:** Check for quantifiable achievements and clarity.
@@ -67,6 +68,7 @@ A serverless, AI-powered Applicant Tracking System (ATS) and resume analyzer. **
     * Convert the first page to an image for preview.
     * Send the text and job description to the AI model.
 4.  **Review:** You will be redirected to a feedback page showing your score and specific tips to improve your application.
+5.  **Generate Cover Letter:** Click "Write Cover Letter" in the navbar to draft a personalized letter based on the analysis.
 
 ## ☁️ Deployment
 
