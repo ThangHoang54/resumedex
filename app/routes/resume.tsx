@@ -91,7 +91,7 @@ const Resume = () => {
             <div className="flex-1 flex flex-col lg:flex-row lg:overflow-hidden p-4 gap-4">
 
                 {/* Resume Preview */}
-                <section className="bg-[url('/images/bg-main.svg')] flex shrink-0 h-[500px] lg:h-auto lg:w-[35%] rounded-2xl border border-slate-200 overflow-hidden relative items-center justify-center p-2 lg:p-4">
+                <section className="bg-[url('/images/bg-small.svg')] flex shrink-0 h-[500px] lg:h-auto lg:w-[35%] rounded-2xl border border-slate-200 overflow-hidden relative items-center justify-center p-2 lg:p-4">
                     {imageUrl ? (
                         <div className="h-full w-full shadow-inner rounded-xl overflow-hidden bg-white relative group border border-slate-200">
                             <a href={resumeUrl} target="_blank" rel="noreferrer" className="block h-full w-full overflow-y-auto scrollbar-thin scrollbar-thumb-slate-300">

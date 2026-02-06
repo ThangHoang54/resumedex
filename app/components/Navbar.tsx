@@ -13,21 +13,21 @@ const Navbar: () => JSX.Element = () => {
         <nav className="rounded-full p-2 md:p-3 w-[95%] md:w-full px-6 md:px-10 max-w-[1200px] mx-auto sticky top-0 z-50 border-b border-slate-200/60 bg-white/80 backdrop-blur-md transition-all">
             <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
                 {/* 1. Brand / Logo */}
-                <Link to="/" className="flex items-center gap-2 group">
+                <Link to="/" className="flex items-center gap-2 group mr-2">
                     <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-600 to-violet-600 text-white shadow-md transition-transform group-hover:scale-105">
                         <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                         </svg>
                     </div>
-                    <span className="text-xl font-bold text-slate-800 tracking-tight group-hover:text-indigo-600 transition-colors">
+                    <span className="text-shadow-xs font-bold text-slate-800 tracking-tight group-hover:text-indigo-600 transition-colors">
                         RESUMEDEX
                     </span>
                 </Link>
 
                 {/* 2. Right Side Actions */}
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-3">
                     <Link to="/upload" className={cn(
-                            "hidden sm:flex items-center gap-2 rounded-full px-5 py-2 text-sm font-bold text-white transition-all shadow-sm hover:shadow-md",
+                            "hidden sm:flex items-center gap-2 rounded-full px-2 py-2 text-sm font-bold text-white transition-all shadow-sm hover:shadow-md",
                             "bg-slate-900 hover:bg-slate-800"
                         )}
                     >
