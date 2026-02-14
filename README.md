@@ -1,6 +1,9 @@
-# ResumeDex - AI Resume Analyzer
+<p align="center">
+    <img src="./public/icons/logo.png" width="256" alt="logo">
+</p>
+<h1 align="center">ResumeDex - AI Resume Analyzer</h1>
 
-A serverless, AI-powered Applicant Tracking System (ATS) and resume analyzer. **Resumind** helps jobseekers optimize their resumes by analyzing them against specific job descriptions using advanced AI models (Claude, GPT, etc.) entirely for free via Puter.js.
+A serverless, AI-powered Applicant Tracking System (ATS) and resume analyzer. **ResumeDex** helps jobseekers optimize their resumes by analyzing them against specific job descriptions using advanced AI models (Claude, GPT, etc.) entirely for free via Puter.js.
 
 ![Resumind Screenshot](/public/images/sample.png)
 
