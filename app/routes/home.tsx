@@ -87,6 +87,12 @@ export default function Home() {
                                         <ResumeCard key={resume.id} resume={resume} />
                                     ))}
                                 </div>
+
+                                <div className="mt-8 text-center">
+                                    <Link to="/wipe" className="text-sm text-red-600 hover:underline">
+                                        Wipe All Your Resume Analysed Data
+                                    </Link>
+                                </div>
                             </div>
                         )}
                     </>

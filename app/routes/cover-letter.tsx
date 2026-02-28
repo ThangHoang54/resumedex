@@ -1,6 +1,6 @@
 import { Link, useNavigate, useParams } from "react-router";
 import { useEffect, useState } from "react";
-import { usePuterStore } from "~/lib/puter";
+import {CURRENT_AI_MODEL, usePuterStore} from "~/lib/puter";
 
 export const meta = () => ([
     { title: 'ResumeDex | Cover Letter' },
@@ -73,8 +73,10 @@ const CoverLetter = () => {
 
             setContent(cleanText);
             setResumeData(updatedData);
-        } catch (error) {
-            alert("Failed to generate cover letter. Please try again.");
+        } catch (e: any) {
+            const errorMessage = e?.error || e?.message || "Unknown error occurred";
+            console.log(`Generate cover letter failed using model: ${CURRENT_AI_MODEL}\n\nError: ${errorMessage}`);
+            alert(`Generate cover letter failed using model: ${CURRENT_AI_MODEL}\n\nError: ${errorMessage}`);
         } finally {
             setIsGenerating(false);
         }
@@ -158,26 +160,56 @@ const CoverLetter = () => {
 
                 {/* Content Area */}
                 {content ? (
-                    <div className="relative w-full max-w-[850px] mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700">
+                    <div className="relative w-full max-w-[850px] mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700 group perspective-1000">  {/* Added perspective for better 3D feel */}
 
-                        {/* The "Paper" */}
-                        <div className="bg-slate-100 rounded-sm shadow-xl border border-slate-200 min-h-[1000px] p-8 md:p-16 relative">
+                        {/* Stacked Paper Effects — softer, more realistic */}
+                        <div className="absolute inset-0 bg-[#f8f9fa] border border-slate-200/40 rounded-lg shadow-[0_8px_25px_rgba(0,0,0,0.08)] -z-20 rotate-[1.2deg] scale-[0.98] transition-transform duration-700 group-hover:rotate-[2deg] group-hover:scale-[0.99]"></div>
+                        <div className="absolute inset-0 bg-[#fdfdfd] border border-slate-200/30 rounded-lg shadow-[0_12px_35px_rgba(0,0,0,0.06)] -z-10 rotate-[0.6deg] scale-[0.99] transition-transform duration-700 group-hover:rotate-[-0.8deg] group-hover:scale-100"></div>
+
+                        {/* The "Paper" — main sheet with subtle inner shadow + optional faint texture */}
+                        <div className="premium-letter-paper relative z-10 bg-[#fdfdfd] rounded-lg shadow-xl overflow-hidden transition-all duration-500 group-hover:shadow-2xl">
 
                             {isGenerating && (
-                                <div className="absolute inset-0 bg-white/80 backdrop-blur-sm z-10 flex flex-col items-center justify-center">
-                                    <div className="w-10 h-10 border-4 border-slate-200 border-t-indigo-600 rounded-full animate-spin mb-4"></div>
-                                    <p className="text-indigo-600 font-bold animate-pulse">Refining your letter...</p>
+                                <div className="absolute inset-0 bg-white/50 backdrop-blur-sm z-20 flex flex-col items-center justify-center rounded-lg border border-white/30">
+                                    <div className="w-12 h-12 border-4 border-slate-200 border-t-violet-600 rounded-full animate-spin mb-5 shadow-[0_0_20px_rgba(139,92,246,0.3)]"></div>
+                                    <p className="text-slate-700 font-medium tracking-wide animate-pulse text-lg">Crafting your professional letter...</p>
                                 </div>
                             )}
 
                             {/* Letter Content */}
-                            <div className="prose prose-slate max-w-none font-serif text-slate-800 leading-loose text-base md:text-lg whitespace-pre-wrap selection:bg-indigo-100 selection:text-indigo-900">
-                                {content}
+                            <div className="premium-letter-text px-10 py-12 md:px-16 md:py-16 min-h-[700px] bg-[linear-gradient(to_bottom,rgba(0,0,0,0.015)_1px,transparent_1px)] bg-[length:100%_1.8rem]">  {/* Optional: very faint ruled-line texture */}
+                                {content ? (
+                                    <>
+                                        {/* Realistic header */}
+                                        <div className="text-right mb-10 text-sm text-slate-600 font-medium">
+                                            {new Date().toLocaleDateString('en-US', {
+                                                month: 'long',
+                                                day: 'numeric',
+                                                year: 'numeric'
+                                            })} – {Intl.DateTimeFormat().resolvedOptions().timeZone.split('/')[0] || 'International'}
+                                        </div>
+
+                                        {/* Auto-paragraph + classic formatting */}
+                                        {content.split(/\n\s*\n/).map((paragraph, idx) => (
+                                            <p
+                                                key={idx}
+                                                className={`mb-6 text-justify last:mb-0 ${idx === 0 ? 'first-letter-drop' : ''}`}
+                                            >
+                                                {paragraph.trim()}
+                                            </p>
+                                        ))}
+
+                                        {/* Classic closing */}
+                                        <div className="mt-12 pt-8 border-t border-slate-200/50">
+                                            <p className="font-medium">Sincerely,</p>
+                                            <p className="mt-6">{auth.user?.username.toUpperCase()}</p>  {/* Replace with parsed name later if available */}
+                                        </div>
+                                    </>
+                                ) : (
+                                    <p className="text-slate-400 italic text-center py-20">Letter content will appear here...</p>
+                                )}
                             </div>
                         </div>
-
-                        <div className="absolute top-2 left-2 w-full h-full bg-white border border-slate-200 rounded-sm shadow-sm -z-10 rotate-1"></div>
-                        <div className="absolute top-4 left-4 w-full h-full bg-white border border-slate-200 rounded-sm shadow-sm -z-20 -rotate-1"></div>
                     </div>
                 ) : (
                     <div className="w-full flex-1 flex flex-col items-center justify-center bg-white rounded-3xl border border-dashed border-slate-300 p-8 md:p-12 min-h-[500px] shadow-sm animate-in zoom-in-95 duration-500">

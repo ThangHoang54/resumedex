@@ -96,6 +96,8 @@ interface PuterStore {
     clearError: () => void;
 }
 
+export const CURRENT_AI_MODEL = "openai/gpt-4o-mini";
+
 const getPuter = (): typeof window.puter | null =>
     typeof window !== "undefined" && window.puter ? window.puter : null;
 
@@ -350,7 +352,7 @@ export const usePuterStore = create<PuterStore>((set, get) => {
                     ],
                 },
             ],
-            { model: "claude-3-7-sonnet-latest" }
+            { model: CURRENT_AI_MODEL }
         ) as Promise<AIResponse | undefined>;
     };
 

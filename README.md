@@ -5,7 +5,7 @@
 
 A serverless, AI-powered Applicant Tracking System (ATS) and resume analyzer. **ResumeDex** helps jobseekers optimize their resumes by analyzing them against specific job descriptions using advanced AI models (Claude, GPT, etc.) entirely for free via Puter.js.
 
-![Resumind Screenshot](/public/images/sample.png)
+![Resumedex Screenshot](/public/images/sample.png)
 
 ## 🚀 Features
 
@@ -19,7 +19,6 @@ A serverless, AI-powered Applicant Tracking System (ATS) and resume analyzer. **
     -   **Skills:** Identify missing keywords and skills required by the job post.
 -   **Zero-Backend Architecture:** Built completely serverless using **Puter.js** for Authentication, File Storage, Key-Value Database, and AI execution.
 -   **Privacy Focused:** Your files are stored securely on your own personal cloud via Puter.
--   **Modern UI:** A responsive, beautiful interface built with React Router v7 and Tailwind CSS v4.
 
 ## 🛠️ Tech Stack
 
@@ -59,6 +58,21 @@ A serverless, AI-powered Applicant Tracking System (ATS) and resume analyzer. **
 4.  **Open the app:**
     Visit `http://localhost:5173` in your browser.
 
+## Configuration
+
+### AI Model
+This app uses Puter.js AI to analyze resumes. Set your preferred model in the code:
+```ts
+// In puter.ts or wherever CURRENT_AI_MODEL is defined
+export const CURRENT_AI_MODEL = "openai/gpt-4o-mini";  // Recommended: fast + vision support
+
+// Other good options:
+// "google/gemini-2.0-flash"          → Excellent multimodal / PDF understanding
+// "anthropic/claude-3-5-sonnet-latest" → Great reasoning & feedback style
+// "qwen/qwen2.5-vl-32b-instruct"     → Strong vision-language at lower cost
+// "openai/gpt-4o"                    → Highest quality (more expensive/slower)
+```
+
 ## 🏃‍♂️ How to Use
 
 1.  **Log In:** Click the "Log In" button. This will authenticate you via your Puter.com account.
@@ -83,4 +97,5 @@ This app is designed to be hosted on **Puter.com** but can be deployed anywhere 
 3.  Upload the contents of the `dist/client` (or `build/client`) folder to your Puter.com file system.
 4.  Launch it as a web app!
 
+**Puter Model** list: https://developer.puter.com/ai/models/
 Built with ❤️ using React Router & Puter.js.

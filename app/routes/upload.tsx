@@ -1,7 +1,7 @@
 import React, {type FormEvent, useCallback, useState} from "react";
 import Navbar from "~/components/Navbar";
 import FileUploader from "~/components/FileUploader";
-import {usePuterStore} from "~/lib/puter";
+import { CURRENT_AI_MODEL, usePuterStore} from "~/lib/puter";
 import {useNavigate} from "react-router";
 import {convertPdfToImage} from "~/lib/pdf2img";
 import {generateUUID} from "~/lib/utils";
@@ -70,9 +70,10 @@ const Upload = () => {
             setProgressStep(5);
 
             setTimeout(() => navigate(`/resume/${uuid}`), 500);
-        } catch (e) {
-            console.error(e);
-            alert("An error occurred during analysis. Please try again");
+        } catch (e: any) {
+            console.error("Analysis Failed:", e);
+            const errorMessage = e?.error || e?.message || "Unknown error occurred";
+            alert(`Analysis failed using model: ${CURRENT_AI_MODEL}\n\nError: ${errorMessage}`);
             setIsProcessing(false);
             setProgressStep(0);
         }
