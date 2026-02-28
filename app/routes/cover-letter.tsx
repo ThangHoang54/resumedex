@@ -1,6 +1,7 @@
 import { Link, useNavigate, useParams } from "react-router";
 import { useEffect, useState } from "react";
 import {CURRENT_AI_MODEL, usePuterStore} from "~/lib/puter";
+import { track } from '@vercel/analytics';
 
 export const meta = () => ([
     { title: 'ResumeDex | Cover Letter' },
@@ -38,6 +39,7 @@ const CoverLetter = () => {
     const handleGenerate = async () => {
         if (!resumeData) return;
         setIsGenerating(true);
+        track('generate_cover_letter');
 
         try {
             const prompt = `

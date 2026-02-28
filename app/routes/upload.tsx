@@ -6,6 +6,7 @@ import {useNavigate} from "react-router";
 import {convertPdfToImage} from "~/lib/pdf2img";
 import {generateUUID} from "~/lib/utils";
 import {prepareInstructions} from "../../constants";
+import { track } from '@vercel/analytics';
 
 export const meta = () => ([
     { title: 'ResumeDex | Upload ' },
@@ -13,7 +14,7 @@ export const meta = () => ([
 ])
 
 const Upload = () => {
-    const { auth, isLoading, fs, ai, kv } = usePuterStore();
+    const { fs, ai, kv } = usePuterStore();
     const navigate = useNavigate();
     const [isProcessing, setIsProcessing] = useState(false);
     const [progressStep, setProgressStep] = useState(0);
@@ -31,6 +32,8 @@ const Upload = () => {
             setProgressStep(1);
             const uploadedFile = await fs.upload([file]);
             if (!uploadedFile) throw new Error('Error: Failed to upload file');
+
+            track('resume_analyzed');
 
             // Step 2: Convert to Image
             setProgressStep(2);
