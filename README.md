@@ -4,6 +4,7 @@
 <h1 align="center">ResumeDex - AI Resume Analyzer</h1>
 
 A serverless, AI-powered Applicant Tracking System (ATS) and resume analyzer. **ResumeDex** helps jobseekers optimize their resumes by analyzing them against specific job descriptions using advanced AI models (Claude, GPT, etc.) entirely for free via Puter.js.
+
 **`ResumeDex URL`**: https://resume-dex.vercel.app
 
 ![Resumedex Screenshot](/public/images/sample.png)
